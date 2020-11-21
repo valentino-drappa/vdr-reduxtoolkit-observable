@@ -4,7 +4,7 @@ import { AbstractEpicReducer } from './AbstractEpicReducer';
 import { AbstractSingleReducer } from './AbstractSingleReducer';
 
 export abstract class AbstractStateSlice<State> {
-  abstract getStatName: () => string;
+  abstract getSliceName: () => string;
   abstract getInitialState: () => State;
 
   private _singleReducers: AbstractSingleReducer<State, any>[];
@@ -23,7 +23,7 @@ export abstract class AbstractStateSlice<State> {
   get slice(): Slice {
     if (!this._slice) {
       this._slice = createSlice<State, CaseReducers<State, Actions>, string>({
-        name: this.getStatName(),
+        name: this.getSliceName(),
         initialState: this.getInitialState(),
         reducers: {
           ...this._singleReducers.reduce(
