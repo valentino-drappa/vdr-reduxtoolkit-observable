@@ -2,7 +2,7 @@ import { Slice } from '@reduxjs/toolkit';
 import { AbstractEpicReducer } from './AbstractEpicReducer';
 import { AbstractSingleReducer } from './AbstractSingleReducer';
 export declare abstract class AbstractStateSlice<State> {
-    abstract getStatName: () => string;
+    abstract getSliceName: () => string;
     abstract getInitialState: () => State;
     private _singleReducers;
     private _epicReducers;
