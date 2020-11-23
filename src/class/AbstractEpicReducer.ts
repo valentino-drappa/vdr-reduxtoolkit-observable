@@ -41,7 +41,7 @@ export abstract class AbstractEpicReducer<State, FetchPayload, FetchSuccessPaylo
         action: { type: string; payload: FetchSuccessPayload },
       ): State => this.fetchSuccess(state, action.payload),
       [`${this.actionName}_fetchError`]: (state: State, action: { type: string; payload: FetchErrorPayload }): State =>
-        this.fetchError(state, action.payload as FetchErrorPayload),
+        this.fetchError(state, action.payload),
     };
   }
 }
