@@ -2,10 +2,10 @@ import { FetchErrorPayload } from '../interface/FetchErrorPayload.interface';
 import { AxiosResponse } from 'axios';
 import { SliceActionExecutor } from '../interface/SliceActionExecutor.interface';
 export declare abstract class AbstractEpicReducer<State, FetchPayload, FetchSuccessPayload> implements SliceActionExecutor<State, FetchPayload, FetchSuccessPayload> {
-    abstract fetchApiCall: (data: FetchPayload) => Promise<AxiosResponse<FetchSuccessPayload>>;
-    abstract fetch: (state: State, action: FetchPayload) => State;
-    abstract fetchSuccess: (state: State, action: FetchSuccessPayload) => State;
-    abstract fetchError: (state: State, action: FetchErrorPayload) => State;
+    abstract fetchApiCall: (payload: FetchPayload) => Promise<AxiosResponse<FetchSuccessPayload>>;
+    abstract fetch: (state: State, payload: FetchPayload) => State;
+    abstract fetchSuccess: (state: State, payload: FetchSuccessPayload) => State;
+    abstract fetchError: (state: State, payload: FetchErrorPayload) => State;
     private actionName;
     private fetchAction;
     private fetchSuccessAction;

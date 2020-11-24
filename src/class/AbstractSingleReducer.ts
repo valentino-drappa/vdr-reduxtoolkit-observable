@@ -1,8 +1,5 @@
-import { Action } from 'redux';
-import { SingleAction } from '../interface/SingleAction.interface';
-
 interface SingleReducerExecuter<State, ActionPayload> {
-  consumeAction: (state: State, action: SingleAction<ActionPayload>) => State;
+  consumeAction: (state: State, payload: ActionPayload) => State;
 }
 
 export abstract class AbstractSingleReducer<State, ActionPayload>
@@ -17,5 +14,8 @@ export abstract class AbstractSingleReducer<State, ActionPayload>
     return this._actionName;
   }
 
-  abstract consumeAction: (state: State, action: SingleAction<ActionPayload>) => State;
+  reduce = (state: State, action: { type: string; payload: ActionPayload }) =>
+    this.consumeAction(state, action.payload);
+
+  abstract consumeAction: (state: State, payload: ActionPayload) => State;
 }

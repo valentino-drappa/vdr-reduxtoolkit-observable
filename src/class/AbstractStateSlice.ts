@@ -26,10 +26,7 @@ export abstract class AbstractStateSlice<State> {
         name: this.getSliceName(),
         initialState: this.getInitialState(),
         reducers: {
-          ...this._singleReducers.reduce(
-            (prev, next) => Object.assign(prev, { [next.actionName]: next.consumeAction }),
-            {},
-          ),
+          ...this._singleReducers.reduce((prev, next) => Object.assign(prev, { [next.actionName]: next.reduce }), {}),
           ...this._epicReducers.map((x) => x.reducers).reduce((prev, next) => Object.assign(prev, next), {}),
         },
       });
